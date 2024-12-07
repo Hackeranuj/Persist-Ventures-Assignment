@@ -17,6 +17,64 @@ body{
 
 /*Header*/
 
+/* Button container styling (optional for centering or layout) */
+
+
+/* Button styling */
+.start-button {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scale effect on hover */
+.start-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation for background on hover */
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3, #ff758c);
+  z-index: 0;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+
+
+/* Text color change on hover */
+.start-button:hover {
+  color: black;
+}
+
+/* Adding ripple animation on click */
+.start-button:active {
+  transform: scale(1.05);
+}
+
+.start-button:focus {
+  outline: 2px dashed #fff;
+}
+
+
 header{
 	position:fixed;
 	left: 0px;
@@ -207,11 +265,58 @@ header .ham-burger.active span:nth-child(2){
  -webkit-display: flex;
  display: flex;
 }
-.about .content .box{
-	flex:0 0 33.33%;
+
+
+.about .content .box {
+	flex: 0 0 33.33%;
 	max-width: 33.33%;
-	padding:15px;
-}
+	padding: 20px;
+	
+	position: relative; /* Necessary for pseudo-elements */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	/* background: #f9f9f9;  */
+	/* box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .about .content .box::after, .about .content .box::before {
+	content: '';
+	position: absolute;
+	background: #ff7f50; /* Accent color for the border */
+	transition: width 0.3s ease, height 0.3s ease;
+  }
+  
+  /* Bottom border */
+  .about .content .box::after {
+	height: 3px;
+	width: 0;
+	bottom: 0;
+	left: 0;
+  }
+  
+  /* Right border */
+  .about .content .box::before {
+	width: 3px;
+	height: 0;
+	top: 0;
+	right: 0;
+  }
+  
+  .about .content .box:hover {
+	transform: scale(1.1);
+	
+	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2); /* Enhance shadow for hover */
+  }
+  
+  .about .content .box:hover::after {
+	width: 100%; /* Animate the bottom border */
+  }
+  
+  .about .content .box:hover::before {
+	height: 100%; /* Animate the right border */
+  }
+  
+
+
 .about .content .box .inner{
 	background-color:#222222;
 }
